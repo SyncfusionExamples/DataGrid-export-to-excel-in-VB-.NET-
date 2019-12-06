@@ -21,3 +21,5 @@ Dim excelEngine = dataGrid.ExportToExcel(dataGrid.View, options)
 Dim workBook = excelEngine.Excel.Workbooks(0)
 workBook.SaveAs("Sample.xlsx")
 ```
+## Requirements to run the demo
+Visual Studio 2015 and above versions
