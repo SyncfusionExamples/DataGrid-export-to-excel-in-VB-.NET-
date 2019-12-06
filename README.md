@@ -6,6 +6,7 @@ DataGrid provides support to export data to excel. It provides exporting support
 The following assemblies needs to be added for exporting to excel.
 
 •	Syncfusion.SfGridConverter.WPF
+
 •	Syncfusion.XlsIO.Base
 
 Exporting the DataGrid to excel can be performed by using [ExportToExcel](http://help.syncfusion.com/cr/cref_files/wpf/Syncfusion.SfGridConverter.WPF~Syncfusion.UI.Xaml.Grid.Converter.GridExcelExportExtension~ExportToExcel.html) extension method present in [Syncfusion.UI.Xaml.Grid.Converter](http://help.syncfusion.com/cr/cref_files/wpf/webtoc.html) namespace.
