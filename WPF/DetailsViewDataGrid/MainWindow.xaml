@@ -1,0 +1,98 @@
+﻿<Window x:Class="MasterDetailsExportingDemo.MainWindow"
+                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                             xmlns:local="clr-namespace:MasterDetailsExportingDemo"
+                             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+                             Title="MainWindow">
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid  Margin="35,0,35,35">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="78*" />
+                <ColumnDefinition Width="30*" />
+            </Grid.ColumnDefinitions>
+
+            <!--  GridView  -->
+            <Border Grid.Column="0">
+                <syncfusion:SfDataGrid x:Name="dataGrid"
+                                       AutoGenerateColumns="False"
+                                       HideEmptyGridViewDefinition="True"
+                                       ItemsSource="{Binding Path=OrdersDetails}"
+                                       NavigationMode="Cell"
+                                       AllowResizingColumns="True"
+                                       SelectionMode="Multiple"
+                                       ShowGroupDropArea="True">
+                    <syncfusion:SfDataGrid.DetailsViewDefinition>
+                        <syncfusion:GridViewDefinition RelationalColumn="OrderDetails">
+                            <syncfusion:GridViewDefinition.DataGrid>
+                                <syncfusion:SfDataGrid x:Name="FirstDetailsViewGrid">
+                                    <syncfusion:SfDataGrid.Columns>
+                                        <syncfusion:GridTextColumn MappingName="OrderID" />
+                                        <syncfusion:GridTextColumn MappingName="ProductID" TextAlignment="Right" />
+                                        <syncfusion:GridTextColumn HeaderText="Unit Price"
+                                                                   MappingName="UnitPrice"
+                                                                   TextAlignment="Right" />
+                                        <syncfusion:GridTextColumn MappingName="Quantity" TextAlignment="Right" />
+                                        <syncfusion:GridTextColumn MappingName="Discount" TextAlignment="Right" />
+                                        <syncfusion:GridTextColumn MappingName="CustomerID" />
+                                        <syncfusion:GridDateTimeColumn HeaderText="Order Date"
+                                                                       MappingName="OrderDate"
+                                                                       TextAlignment="Right" />
+                                    </syncfusion:SfDataGrid.Columns>
+                                </syncfusion:SfDataGrid>
+                            </syncfusion:GridViewDefinition.DataGrid>
+                        </syncfusion:GridViewDefinition>
+                    </syncfusion:SfDataGrid.DetailsViewDefinition>
+
+
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn MappingName="OrderID" />
+                        <syncfusion:GridTextColumn MappingName="CustomerID" />
+                        <syncfusion:GridDateTimeColumn Width="200"
+                                                       HeaderText="Shipping Date"
+                                                       MappingName="ShippingDate"
+                                                       TextAlignment="Right" />
+                        <syncfusion:GridTextColumn MappingName="EmployeeID" TextAlignment="Right" />
+                        <syncfusion:GridTextColumn HeaderText="Ship City" MappingName="ShipCity" />
+                        <syncfusion:GridTextColumn HeaderText="Ship Country" MappingName="ShipCountry" />
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=Freight, StringFormat='{}{0:c}'}" TextAlignment="Right" />
+                        <syncfusion:GridCheckBoxColumn HeaderText="Closed" MappingName="IsClosed" />
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
+            </Border>
+
+            <!--  UserOptions  -->
+            <Border Grid.Column="1">
+                <ItemsControl IsTabStop="False">
+                    <syncfusion:UserOptions Grid.Column="1" HeaderText="Options">
+                        <StackPanel Margin="5">
+                            <TextBlock Margin="5"
+                                           FontSize="12"
+                                           FontWeight="Bold"
+                                           Text="Export DataGrid To Excel" />
+                            <Button Margin="5"
+                                Command="local:Commands.ExportToExcel"
+                                CommandTarget="{Binding ElementName=dataGrid}"
+                                Content="Export to Excel" >
+                            </Button>
+
+
+                            <TextBlock Margin="5"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Text="Export Selected Items To Excel" />
+                            <Button Margin="5"
+                                Command="local:ExportSelectedCommand.ExportToExcel"
+                                CommandTarget="{Binding ElementName=dataGrid}"
+                                Content="Export to Excel" >
+                            </Button>
+                        </StackPanel>
+                    </syncfusion:UserOptions>
+                </ItemsControl>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
