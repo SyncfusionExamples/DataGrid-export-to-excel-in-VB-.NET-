@@ -1,7 +1,9 @@
 # DataGrid export to excel in VB.NET
 ## About the sample
-This example illustrates how to export the WPF DataGrid to excel
-DataGrid provides support to export data to excel. It provides exporting support for grouping, filtering, sorting, paging, unbound rows, stacked headers, merged cells and details view.
+
+This example illustrates how to export the [WPF DataGrid](https://www.syncfusion.com/wpf-ui-controls/datagrid) (SfDataGrid) to excel.
+
+[WPF DataGrid](https://www.syncfusion.com/wpf-ui-controls/datagrid) (SfDataGrid) provides support to export data to excel. It provides exporting support for grouping, filtering, sorting, paging, unbound rows, stacked headers, merged cells and details view.
 
 The following assemblies needs to be added for exporting to excel.
 
