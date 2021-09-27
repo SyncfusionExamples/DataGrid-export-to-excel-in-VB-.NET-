@@ -23,5 +23,8 @@ Dim excelEngine = dataGrid.ExportToExcel(dataGrid.View, options)
 Dim workBook = excelEngine.Excel.Workbooks(0)
 workBook.SaveAs("Sample.xlsx")
 ```
+
+KB article - [DataGrid export to excel in VB.NET](https://www.syncfusion.com/kb/10926/how-to-export-the-wpf-datagrid-sfdatagrid-to-excel-in-vb-net)
+
 ## Requirements to run the demo
 Visual Studio 2015 and above versions
